@@ -24,9 +24,9 @@ Usage of huegonaught:
   -controlled string
         (required) comma-separated list of light ids to turn off when signal bulbs are unreachable
   -off int
-        the polling interval (in seconds) when the lights are off (default 10)
+        the polling interval (in seconds) when the lights are off (default 60)
   -on int
-        the polling interval (in seconds) when the lights are on (default 1)
+        the polling interval (in seconds) when the lights are on (default 10)
   -signal string
         (required) comma-separated list of bulb ids to monitor for reachable status
   -user string

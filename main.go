@@ -14,8 +14,8 @@ import (
 func main() {
 	bridgeFlag := flag.String("bridge", "philips-hue", "the ip address of the Hue bridge")
 	userFlag := flag.String("user", "", "(required) the user for Hue bridge")
-	onPollingIntervalFlag := flag.Int("on", 1, "the polling interval (in seconds) when the lights are on")
-	offPollingIntervalFlag := flag.Int("off", 10, "the polling interval (in seconds) when the lights are off")
+	onPollingIntervalFlag := flag.Int("on", 10, "the polling interval (in seconds) when the lights are on")
+	offPollingIntervalFlag := flag.Int("off", 60, "the polling interval (in seconds) when the lights are off")
 	signalBulbsFlag := flag.String("signal", "", "(required) comma-separated list of bulb ids to monitor for reachable status")
 	controlledBulbsFlag := flag.String("controlled", "", "(required) comma-separated list of light ids to turn off when signal bulbs are unreachable")
 	verboseFlag := flag.Bool("v", false, "verbose")
@@ -70,13 +70,13 @@ func main() {
 			allUnreachable := areAllUnreachable(lightsMap, signalBulbs)
 			// See if we flipped from reachable to unreachable
 			if reachable && allUnreachable {
-				log.Println("Detected switch off, so turning other lights off and changing polling interval")
+				log.Println("Detected switch off, so turning other lights off and changing polling interval to", offPollingInterval)
 				turnOffBulbs(lightsMap, controlledBulbs)
 				// Now start doing the "off" polling
 				ticker.Reset(offPollingInterval)
 				reachable = false
 			} else if !reachable && !allUnreachable {
-				log.Println("Detected switch on, so switching polling interval")
+				log.Println("Detected switch on, so switching polling interval to", onPollingInterval)
 				ticker.Reset(onPollingInterval)
 				reachable = true
 			}
