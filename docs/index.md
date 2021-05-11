@@ -1,5 +1,3 @@
-# Huegonaught
-
 One of my personal Hack Week projects was to mess around with the [Hue](https://www.philips-hue.com/en-us) controller to help pimp out a game room with Hue lighting effects. This page will walk through the motivation and how I ended up building the thing.
 
 ## Motivation
