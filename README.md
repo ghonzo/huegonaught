@@ -5,6 +5,8 @@ A utility to turn off [Hue](https://www.philips-hue.com/en-us) lights when some 
 * **Go** - written in Go
 * **Naught** - turns lights off
 
+See the [Project Page](https://ghonzo.github.io/huegonaught/) for the whole story.
+
 ## History
 This little project was born out of necessity. We obtained a [Hue HDMI Sync Box](https://www.philips-hue.com/en-us/p/hue-play-hdmi-sync-box-/046677555221) for the game room so we had a mix of:
 * Two [Hue Play](https://www.philips-hue.com/en-us/p/hue-white-and-color-ambiance-play-light-bar-double-pack/7820230U7) bars behind the TV
