@@ -12,13 +12,23 @@ I saw some cool examples of how you can sync the lighting to the picture on the 
 
 If I was building this around a PC gaming experience, it looks like I could use the [Hue Sync for PC](https://www.philips-hue.com/en-us/explore-hue/propositions/entertainment/sync-with-pc) application to sync the lights to what's going on the screen, but alas this is not a PC gaming room. Instead, I needed to acquire a [Play HDMI Sync Box](https://www.philips-hue.com/en-us/p/hue-play-hdmi-sync-box-/046677555221), which sits in between the PS5 and the TV and controls the color of any surrounding Hue lights based on what's on the screen. These devices seem to be in high demand, but I got lucky and found them in stock at [Best Buy](https://www.bestbuy.com/site/philips-hue-play-hdmi-sync-box-black/6371722.p?skuId=6371722). It's way more expensive than it should be, but let's face it: everything in the Hue ecosystem is more expensive than it should be.
 
-The next step is to figure out the lighting to put around the screen. I have several can lights in the ceiling, and I already happened to have some BR30 color Hue bulbs, so I replaced the existing bulbs with the Hue bulbs. These are all controlled by a dumb, non-dimming light switch on the wall, and -- spoiler alert! -- I didn't want to replace this switch. So you walk into the room, flip on the switch, all the ceiling lights turn on to bright white or whatever. You leave the room, you flip the switch off and they turn off (and become unreachable to the Hue hub).
+The next step is to figure out the lighting to put around the screen. I have several can lights in the ceiling, and I already happened to have some BR30 color Hue bulbs, so I replaced the existing bulbs with the Hue bulbs.
+
+![Can Lights](ceiling.jpg)
+
+These are all controlled by a dumb, non-dimming light switch on the wall, and -- spoiler alert! -- I didn't want to replace this switch. So you walk into the room, flip on the switch, all the ceiling lights turn on to bright white or whatever. You leave the room, you flip the switch off and they turn off (and become unreachable to the Hue hub).
+
+![My Dumb Switch](dumb-switch.jpg)
 
 All the cool photos that show the lighting synced with the TV show some lights behind the screen, so I'm going to need that. It seems like the only thing that's in more demand than the HDMI Sync Box is the [Play Gradient Lightstrip](https://www.philips-hue.com/en-us/p/hue-white-and-color-ambiance-play-gradient-lightstrip-75-inch/046677560423) that you're supposed to put behind your screen. I couldn't find that in stock anywhere, so instead I went with a couple of [Play Light Bars](https://www.philips-hue.com/en-us/p/hue-white-and-color-ambiance-play-light-bar-double-pack/7820230U7). They fit behind the screen and I pointed them at the wall. They actually work really well.
+
+![Play Light Bar](play-bar.jpg)
 
 I also got a [Hue Bloom table lamp](https://www.philips-hue.com/en-us/p/hue-white-and-color-ambiance-bloom-table-lamp/046677560188) and put it off to the side for some more ambient lighting, but I'm not sure how much this really adds so I might find a different place in the house to put it. But for now, it's there.
 
 Great! So now I've got all the lighting in place and the HDMI Sync Box installed. Next, you install an app called Hue Sync, which is distinct from the existing Hue app. Kinda thinking they could have consolidated the functionality, but I'm guessing this is [Conway's Law](https://en.wikipedia.org/wiki/Conway%27s_law) in the wild. I position all the lights, configure the room using the app (including the height of each of the lights, which is not obvious in the app), and try it out. It works and it's awesome! It's actually really cool and transforms the room. Even my 13-year old son says it's cool, so you **know** it's cool.
+
+![Hue Sync In Action](hue-sync-in-action.gif)
 
 ## The Challenge
 
