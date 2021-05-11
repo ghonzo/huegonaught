@@ -1,6 +1,6 @@
 # Huegonaught
 
-A utility to turn off [Hue](https://www.philips-hue.com/en-us) lights when some other light(s) become unreachable. The horribly embarrasing name of the project comes from:
+A utility to turn off [Hue](https://www.philips-hue.com/en-us) lights when some other light(s) become unreachable. The horribly embarrassing name of the project comes from:
 * **Hue** - works with Hue lights
 * **Go** - written in Go
 * **Naught** - turns lights off
