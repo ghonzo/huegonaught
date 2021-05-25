@@ -1,9 +1,11 @@
 # Huegonaught
 
-A utility to turn off [Hue](https://www.philips-hue.com/en-us) lights when some other light(s) become unreachable. The horribly embarrasing name of the project comes from:
+A utility to turn off [Hue](https://www.philips-hue.com/en-us) lights when some other light(s) become unreachable. The horribly embarrassing name of the project comes from:
 * **Hue** - works with Hue lights
 * **Go** - written in Go
 * **Naught** - turns lights off
+
+See the [Project Page](https://ghonzo.github.io/huegonaught/) for the whole story.
 
 ## History
 This little project was born out of necessity. We obtained a [Hue HDMI Sync Box](https://www.philips-hue.com/en-us/p/hue-play-hdmi-sync-box-/046677555221) for the game room so we had a mix of:
