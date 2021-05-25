@@ -56,7 +56,7 @@ func main() {
 	ticker := time.NewTicker(onPollingInterval)
 	log.Println("Connected to bridge, starting to poll now")
 	reachable := false
-	for range ticker.C {
+	for ; true; <-ticker.C {
 		if *verboseFlag {
 			log.Println("Polling ... reachable = ", reachable)
 		}
