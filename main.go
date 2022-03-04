@@ -11,6 +11,14 @@ import (
 	hue "github.com/collinux/gohue"
 )
 
+type SwitchState int
+
+const (
+	On SwitchState = iota
+	TurningOff
+	Off
+)
+
 func main() {
 	bridgeFlag := flag.String("bridge", "philips-hue", "the ip address of the Hue bridge")
 	userFlag := flag.String("user", "", "(required) the user for Hue bridge")
@@ -55,10 +63,10 @@ func main() {
 	}
 	ticker := time.NewTicker(onPollingInterval)
 	log.Println("Connected to bridge, starting to poll now")
-	reachable := false
+	switchState := On
 	for ; true; <-ticker.C {
 		if *verboseFlag {
-			log.Println("Polling ... reachable = ", reachable)
+			log.Println("Polling ... switchState = ", switchState)
 		}
 		if lights, err := bridge.GetAllLights(); err != nil {
 			log.Println("Error getting lights:", err)
@@ -69,16 +77,33 @@ func main() {
 			}
 			allUnreachable := areAllUnreachable(lightsMap, signalBulbs)
 			// See if we flipped from reachable to unreachable
-			if reachable && allUnreachable {
-				log.Println("Detected switch off, so turning other lights off and changing polling interval to", offPollingInterval)
-				turnOffBulbs(lightsMap, controlledBulbs)
-				// Now start doing the "off" polling
-				ticker.Reset(offPollingInterval)
-				reachable = false
-			} else if !reachable && !allUnreachable {
-				log.Println("Detected switch on, so switching polling interval to", onPollingInterval)
-				ticker.Reset(onPollingInterval)
-				reachable = true
+			switch switchState {
+			case On:
+				if allUnreachable {
+					log.Println("Detected switch off, so transitioning to TurningOff")
+					turnOffBulbs(lightsMap, controlledBulbs)
+					switchState = TurningOff
+				}
+			case TurningOff:
+				// Make sure they are still off
+				if !allUnreachable {
+					log.Println("Switch flipped back on, so go back to On state")
+					switchState = On
+				} else if areAllOff(lightsMap, controlledBulbs) {
+					log.Println("Confirmed all controlled lights are off, transitioning to Off state with polling interval", offPollingInterval)
+					ticker.Reset(offPollingInterval)
+					switchState = Off
+				} else {
+					log.Println("Some lights are still on, sending off signal again")
+					turnOffBulbs(lightsMap, controlledBulbs)
+					// Stay in this state
+				}
+			case Off:
+				if !allUnreachable {
+					log.Println("Detected switch on, so switching polling interval to", onPollingInterval)
+					ticker.Reset(onPollingInterval)
+					switchState = On
+				}
 			}
 		}
 	}
@@ -88,6 +113,16 @@ func main() {
 func areAllUnreachable(lightsMap map[int]hue.Light, signalBulbs []int) bool {
 	for _, bulb := range signalBulbs {
 		if light, ok := lightsMap[bulb]; ok && light.State.Reachable {
+			return false
+		}
+	}
+	return true
+}
+
+// Return false if at least one is on, otherwise return true
+func areAllOff(lightsMap map[int]hue.Light, signalBulbs []int) bool {
+	for _, bulb := range signalBulbs {
+		if light, ok := lightsMap[bulb]; ok && light.State.On {
 			return false
 		}
 	}
